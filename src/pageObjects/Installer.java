@@ -38,6 +38,9 @@ public class Installer {
 	
 	@FindBy(how=How.XPATH, using = "//*[@id=\"dbHostPort\"]")
 	private WebElement txtDbConfigPort;
+		
+	@FindBy(how=How.XPATH, using="//*[@id=\"content\"]/table/tbody/tr[3]/td[2]/input")
+	private WebElement txtDbHostName;
 	
 	@FindBy(how=How.XPATH, using = "//*[@id=\"content\"]/table/tbody/tr[5]/td[2]/input")
 	private WebElement txtDbConfigDbName;
@@ -129,12 +132,16 @@ public class Installer {
 	    
 	    
 	//In Database Configuration Page
-	     
-	     //port
+	    
+	     //db host name
+	    txtDbHostName.clear();
+	    txtDbHostName.sendKeys(FileReaderManager.getInstance().getConfigFileReader().getDatabaseHostName());
+	    System.out.println("In Database Configuration Page..");
+	    
+	     //db host port
 	    txtDbConfigPort.clear();
 	    txtDbConfigPort.sendKeys(FileReaderManager.getInstance().getConfigFileReader().getDatabasePort());
-	    System.out.println("In Database Configuration Page..");
-	     
+	    	     
 	     //db name
 	    txtDbConfigDbName.clear();
 	    txtDbConfigDbName.sendKeys(FileReaderManager.getInstance().getConfigFileReader().getDatabaseName()); 

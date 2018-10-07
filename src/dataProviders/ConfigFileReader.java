@@ -63,6 +63,12 @@ public class ConfigFileReader {
 		else throw new RuntimeException("installer Path is not specified in the Configuration.properties file");
 	}
 	
+	public String getDatabaseHostName() {
+		String value = properties.getProperty("databaseHostName");
+		if(value != null) return value;
+		else throw new RuntimeException("Database Host Name is not specified in the Configuration.properties file");
+	}
+	
 	public String getDatabasePort() {
 		String value = properties.getProperty("databasePort");
 		if(value != null) return value;
