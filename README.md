@@ -1,8 +1,7 @@
 # OrangeHRM OS -Installation-Automation
 
 
-## Introduction
-This project # OrangHRM OS Automation
+
 ## Introduction
 This project facilitates to run orangehrm automation suite.
 
