@@ -1,6 +1,6 @@
-# OrangeHRM-Installation-Automation
+# OrangeHRM OS -Installation-Automation
 
-# OrangHRM OS Automation
+
 ## Introduction
 This project # OrangHRM OS Automation
 ## Introduction
