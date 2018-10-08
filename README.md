@@ -75,13 +75,13 @@ saveScreenShotPath=screenshot_orangehrm.png
   ```bash
   mvn exec:java -D"exec.mainClass"="orangeHrm.RunHeadless"
   ``` 
-## How to reset
+##  Reset the environment
  * Delete the database
  ```sql
  DROP DATABASE {databaseName};
  ```
  * Delete the following files
-  **  {project-root}/lib/confs/Conf.php
-  **  {project-root}/symfony/cache/*
-  **  {project-root}symfony/config/databases.yml
+ 1. {project-root}/lib/confs/Conf.php
+ 2. {project-root}/symfony/cache/*
+ 3. {project-root}symfony/config/databases.yml
   
