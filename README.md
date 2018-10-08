@@ -5,12 +5,12 @@
 ## Introduction
 This project facilitates to run orangehrm automation suite.
 
-## Tecnology stack
+## Technology stack
  * Java
  * Maven
  * Chrome driver
 
-## How to set up the automation env in Ubuntu
+## How to set up the automation environment in Ubuntu
  * Clone the project 
   ```bash
   git clone git@github.com:yashikajayasinghe/OrangeHRM-Installation-Automation.git
