@@ -10,9 +10,11 @@ This project facilitates to run orangehrm automation suite.
  * Maven
  * Chrome driver
  
- ## Download OrangeHRM Open Source
- https://sourceforge.net/projects/orangehrm/
-
+ ## Set up OrangeHRM Open Source Web Environment 
+ * Download at https://sourceforge.net/projects/orangehrm/
+ * Set up Web server 
+  
+  
 ## How to set up the automation environment in Ubuntu
  * Clone the project 
   ```bash
@@ -73,3 +75,13 @@ saveScreenShotPath=screenshot_orangehrm.png
   ```bash
   mvn exec:java -D"exec.mainClass"="orangeHrm.RunHeadless"
   ``` 
+## How to reset
+ * Delete the database
+ ```sql
+ DROP DATABASE {databaseName};
+ ```
+ * Delete the following files
+  **  {project-root}/lib/confs/Conf.php
+  **  {project-root}/symfony/cache/*
+  **  {project-root}symfony/config/databases.yml
+  
