@@ -9,6 +9,9 @@ This project facilitates to run orangehrm automation suite.
  * Java
  * Maven
  * Chrome driver
+ 
+ ## Download OrangeHRM Open Source
+ https://sourceforge.net/projects/orangehrm/
 
 ## How to set up the automation environment in Ubuntu
  * Clone the project 
