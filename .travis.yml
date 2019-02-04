@@ -1,0 +1,61 @@
+sudo: required
+dist: xenial
+
+language: java
+
+jdk:
+  - openjdk8
+
+env:
+  global:
+    - GIT_APP_BRANCH=master
+    - GIT_DEPTH=50
+    - GIT_APP_URL=https://github.com/orangehrm/orangehrm
+    - APP_DIR=orangehrm
+    - GIT_ENV_BRANCH=master
+    - GIT_ENV_DEPTH=50
+    - GIT_ENV_URL=https://github.com/orangehrm/orangehrm-os-dev-environment
+    - ENV_DIR=ohrm-os-dev-environment
+    - PATH_TO_ARTIFACTS=build/dist/travis/$TRAVIS_BUILD_NUMBER/$TRAVIS_JOB_NUMBER
+    - PATH_TO_CONFIG=configs/Configuration.properties
+    - PATH_TO_SCREENSHOT=screenshot_orangehrm.png
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_CONTAINERS='mysql55|mysql56|mysql57|mariadb55|mariadb100|mariadb101|mariadb102|mariadb103'
+  matrix:
+    - PHP_CONTAINER=php56
+    - PHP_CONTAINER=php70
+    - PHP_CONTAINER=php71
+    - PHP_CONTAINER=php72
+
+services:
+  - docker
+
+before_install:
+  - sudo chmod 777 -R build
+  - ./build/travis/before_install.sh
+
+install:
+  - ./build/travis/install.sh
+
+before_script:
+  - ./build/travis/before_script.sh
+
+script:
+  - ./build/travis/script.sh
+
+after_failure:
+  - ./build/travis/after_failure.sh
+
+after_success:
+  - ./build/travis/after_success.sh
+
+before_deploy:
+  - ./build/travis/before_deploy.sh
+
+deploy:
+  provider: s3
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  bucket: $S3_Bucket
+  skip_cleanup: true
+  local_dir: build/dist
