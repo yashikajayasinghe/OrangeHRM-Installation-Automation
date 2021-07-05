@@ -42,7 +42,7 @@ This project facilitates to run orangehrm automation suite.
   ```
   * Build the project
   ```bash
-  mvn build
+  mvn install
   ```
 
   * Change config file

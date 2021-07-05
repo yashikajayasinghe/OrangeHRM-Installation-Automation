@@ -11,7 +11,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-//import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import managers.FileReaderManager;
 import pageObjects.Installer;
@@ -21,20 +21,20 @@ public class RunHeadless {
 	
 		public static void main(String[] args) throws IOException 
 		{
-			//Driver Headless mode 
-//			System.setProperty("webdriver.chrome.driver", FileReaderManager.getInstance().getConfigFileReader().getDriverPath());  
-//			
-//			ChromeOptions options = new ChromeOptions(); 
-//			
-//			options.addArguments("--headless", "--disable-gpu", "--window-size=1920x1080","--ignore-certificate-errors");  
-//			
-//			WebDriver driver = new ChromeDriver(options);  
-			
-			//Trigger UI automation
-			
 			System.setProperty("webdriver.chrome.driver", FileReaderManager.getInstance().getConfigFileReader().getDriverPath());
-			
-			WebDriver driver = new ChromeDriver(); 
+			System.setProperty("webdriver.chrome.verboseLogging", FileReaderManager.getInstance().getConfigFileReader().getVerboseLogging());
+			System.setProperty("webdriver.chrome.logfile", System.getProperty("user.dir") + "/build/logs/chromedriver.log");
+
+			ChromeOptions options = new ChromeOptions();
+			if (!FileReaderManager.getInstance().getConfigFileReader().getBrowserWindowMaximized()) {
+				options.addArguments("--headless");
+			}
+			if (FileReaderManager.getInstance().getConfigFileReader().getIgnoreCertificateErrors()) {
+				options.addArguments("--ignore-certificate-errors");
+			}
+			options.addArguments("--window-size=" + FileReaderManager.getInstance().getConfigFileReader().getBrowserWindowSize());
+
+			WebDriver driver = new ChromeDriver(options); 
 			
 			Installer newInstaller = new Installer(driver);
 			
